@@ -3,7 +3,34 @@
 
 
     string convert_roman_number(string roman){
-        return "1";
+        int arabic_number = 0;
+        int length_roman_number = string_length(roman);
+        for(int i=0; i <length_roman_number; i++){
+            string current_roman_char = string_sub(roman,i,i+1);
+            //println("::::");
+            //print(current_roman_char);
+            if(string_equal(current_roman_char,"I")){
+                arabic_number += 1;
+            }
+            if(string_equal(current_roman_char,"V")){
+                arabic_number += 5;
+            }
+            if(string_equal(current_roman_char,"X")){
+                arabic_number += 10;
+            }
+            if(string_equal(current_roman_char,"C")){
+                arabic_number += 100;
+            }
+            if(string_equal(current_roman_char,"L")){
+                arabic_number += 50;
+            }
+            if(string_equal(current_roman_char,"M")){
+                arabic_number += 1000;
+            }
+        }
+
+
+        return string_fromint(arabic_number);
     }
 
     int main(){
@@ -11,7 +38,7 @@
         println("Please enter a Roman Number");
         string roman_number = readline();
         string arabic_number = convert_roman_number(roman_number);
-        println(arabic_number);
+        printf("Arabic Number is: %s\n",arabic_number);
         println("-------------------");
 
         return 0;
