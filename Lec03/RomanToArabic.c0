@@ -1,0 +1,18 @@
+#use <conio>
+#use <string>
+
+
+    string convert_roman_number(string roman){
+        return "1";
+    }
+
+    int main(){
+        println("-------------------");
+        println("Please enter a Roman Number");
+        string roman_number = readline();
+        string arabic_number = convert_roman_number(roman_number);
+        println(arabic_number);
+        println("-------------------");
+
+        return 0;
+    }
