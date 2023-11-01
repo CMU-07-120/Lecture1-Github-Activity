@@ -1,0 +1,19 @@
+#use <conio>
+#use <string>
+
+
+    int calculate_string_expression(string expression){
+        
+        return 0;
+    }
+
+    int main(){
+        println("-------------------");
+        println("Please enter a math equation");
+        string string_equation = readline();
+        int calculation_result = calculate_string_expression(string_equation);
+        printf("calculation result is: %d\n",calculation_result);
+        println("-------------------");
+
+        return 0;
+    }
