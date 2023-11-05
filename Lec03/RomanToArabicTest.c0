@@ -1,0 +1,16 @@
+#use <string>
+
+// string convert_roman_number(string roman){
+
+int main(){
+        assert(string_equal(convert_roman_number("I"),"1"));
+        assert(string_equal(convert_roman_number("III"),"3"));
+        assert(string_equal(convert_roman_number("LX"),"60"));
+        assert(string_equal(convert_roman_number("XL"),"40"));
+        assert(string_equal(convert_roman_number("CXL"),"140"));
+        assert(string_equal(convert_roman_number("CM"),"900"));
+        assert(string_equal(convert_roman_number("CDXLIV"),"444"));
+        assert(string_equal(convert_roman_number("LXIII"),"63"));
+        assert(string_equal(convert_roman_number("XLIII"),"43"));
+        return 0;
+    }

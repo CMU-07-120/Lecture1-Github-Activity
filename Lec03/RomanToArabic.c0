@@ -1,49 +1,58 @@
 #use <conio>
 #use <string>
 
+    int return_number_char(string roman_char){
+        if(string_equal(roman_char,"I")){
+                return(1);
+            }
+            if(string_equal(roman_char,"V")){
+                return(5);
+            }
+            if(string_equal(roman_char,"X")){
+                return(10);
+            }
+            if(string_equal(roman_char,"C")){
+               return(100);
+            }
+            if(string_equal(roman_char,"L")){
+                return(50);
+            }
+            if(string_equal(roman_char,"M")){
+                return(1000);
+            }
+            if(string_equal(roman_char,"D")){
+                return(500);
+            }
+            return(0);
+    }
+    
 
     string convert_roman_number(string roman){
         int arabic_number = 0;
         int length_roman_number = string_length(roman);
-        for(int i=0; i <length_roman_number; i++){
-            string current_roman_char = string_sub(roman,i,i+1);
-            string prev_roman_char = "";
-            if(i>0){
-                printf("i: %d",i);
-                prev_roman_char = string_sub(roman,i-1,i);
-                if(string_equal(prev_roman_char,"I") && !string_equal(current_roman_char,"I")){
-                    arabic_number -= 2;
-                    println("-2");
-                }
-            }
+        arabic_number = return_number_char(string_sub(roman,0,1));
 
-            //println("::::");
-            //print(current_roman_char);
-            if(string_equal(current_roman_char,"I")){
-                arabic_number += 1;
+        for(int i=1;i<length_roman_number;i++)
+        {
+            string curr_roman_char = string_sub(roman,i,i+1);
+            string prev_roman_char = string_sub(roman,i-1,i);
+            int curr_roman_num = return_number_char(curr_roman_char);
+            int prev_roman_num = return_number_char(prev_roman_char);
+            //if(prev_roman_num < curr_roman_num){
+            //    arabic_number = arabic_number - prev_roman_num + (curr_roman_num-prev_roman_num);
+            //}else{
+            //arabic_number += curr_roman_num;
+            //}
+            if(prev_roman_num < curr_roman_num){
+              arabic_number = arabic_number - 2*(prev_roman_num);
             }
-            if(string_equal(current_roman_char,"V")){
-                arabic_number += 5;
-            }
-            if(string_equal(current_roman_char,"X")){
-                arabic_number += 10;
-            }
-            if(string_equal(current_roman_char,"C")){
-                arabic_number += 100;
-            }
-            if(string_equal(current_roman_char,"L")){
-                arabic_number += 50;
-            }
-            if(string_equal(current_roman_char,"M")){
-                arabic_number += 1000;
-            }
+            arabic_number += curr_roman_num;
         }
-
 
         return string_fromint(arabic_number);
     }
 
-    int main(){
+    int main_interactive(){
         println("-------------------");
         println("Please enter a Roman Number");
         string roman_number = readline();
